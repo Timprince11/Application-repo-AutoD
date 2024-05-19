@@ -3,7 +3,7 @@ FROM ubuntu
 FROM tomcat
 
 #copy war file on the container
-COPY **/*.war /usr/local/tomcat/webapps
+COPY target/*.war /usr/local/tomcat/webapps
 WORKDIR  /usr/local/tomcat/webapps
 RUN apt update -y && apt install curl -y
 WORKDIR /usr/local/tomcat/webapps
