@@ -12,6 +12,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: List directory structure
+      run: ls -R  # List all files and directories recursively
+
     - name: Set up Maven and Java environment
       run: |
         echo "JAVA_HOME=${JAVA_HOME}"
@@ -20,7 +23,7 @@ jobs:
 
     - name: Build with Maven
       run: |
-        cd app-repo/Application-repo-AutoD  # Ensure this directory is correct
+        cd Application-repo-AutoD  # Adjusted to assume you're starting from the root of app-repo
         mvn -f ./pom.xml clean package
 
     - name: Build Docker image
