@@ -1,0 +1,28 @@
+name: Build and Run Application
+
+on: [push]
+
+jobs:
+  build_and_run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+
+    - name: Build with Maven
+      run: |
+        cd app-repo/Application-repo-AutoD/
+        mvn -f pom.xml clean package
+
+    - name: Build Docker image
+      run: sudo docker build -t petad .
+
+    - name: Run Docker container
+      run: sudo docker run -d -p 8085:8085 -t petad
