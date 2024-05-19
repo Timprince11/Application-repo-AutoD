@@ -1,10 +1,11 @@
 name: Build and Run Application
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
   build_and_run:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, X64, test]  # Change this to match your runner's labels
 
     steps:
     - name: Checkout code
@@ -18,7 +19,7 @@ jobs:
 
     - name: Build with Maven
       run: |
-        cd /Application-repo-AutoD/
+        cd app-repo/Application-repo-AutoD/
         mvn -f pom.xml clean package
 
     - name: Build Docker image
