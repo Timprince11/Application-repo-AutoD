@@ -19,7 +19,7 @@ jobs:
 
     - name: Build with Maven
       run: |
-        cd app-repo/Application-repo-AutoD/
+        cd /home/ubuntu/app-repo/Application-repo-AutoD
         mvn -f pom.xml clean package
 
     - name: Build Docker image
